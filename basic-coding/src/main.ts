@@ -1,12 +1,33 @@
-type SumFunction = (a: string, b: string) => number;
+import yargs from 'yargs';
+import { sum } from './libs';
 
-export const sum: SumFunction = (a, b) => {
-  const _a = +a;
-  const _b = +b;
+const args = yargs(process.argv.slice(2))
+  .usage('Usage: -a [num] -b [num]')
+  .demand(['a', 'b'])
+  .help('help')
+  .alias('help', 'h')
+  .options({
+    a: {
+      description: 'First input to calculate',
+      requiresArg: true,
+      required: true,
+    },
+    b: {
+      description: 'Second input to calculate',
+      requiresArg: true,
+      required: true,
+    },
+  }).argv;
 
-  const isInputsValid = !(isNaN(_a) || isNaN(_b));
+const main = () => {
+  const { a, b } = args as { a: string; b: string };
+  try {
+    const result = sum(a, b);
 
-  if (!isInputsValid) throw new Error('The given values can be only number');
-
-  return _a + _b;
+    console.log(result);
+  } catch (err) {
+    console.error((err as Error).message);
+  }
 };
+
+main();
