@@ -3,6 +3,7 @@ import { sum } from './libs';
 
 const args = yargs(process.argv.slice(2))
   .usage('Usage: -a [num] -b [num]')
+  .example('npm run start -- -a 1 -b 2', '# result of summary will be 3')
   .demand(['a', 'b'])
   .help('help')
   .alias('help', 'h')

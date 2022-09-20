@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "start": "ts-node ."
+    "start": "ts-node .",
+    "help": "ts-node . -h"
   },
   "keywords": [],
   "author": "",
