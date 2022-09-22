@@ -1,0 +1,4 @@
+.app {
+  @apply m-auto container min-h-screen w-full
+    px-4 sm:px-0 flex items-center justify-center;
+}
