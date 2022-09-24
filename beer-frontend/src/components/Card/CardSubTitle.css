@@ -1,0 +1,3 @@
+.card__sub-title {
+  @apply text-slate-600;
+}

@@ -1,5 +1,5 @@
 import './App.css';
-import Beer from './components/Beer';
+import Beer from './pages/Beer';
 import BeerContextProvider from './contexts/beer.context';
 
 function App() {

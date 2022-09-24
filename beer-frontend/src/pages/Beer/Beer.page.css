@@ -1,0 +1,19 @@
+.beer {
+  @apply flex flex-col items-center justify-center gap-2 md:gap-4;
+}
+
+.beer__loading {
+  @apply w-52 h-52 relative;
+}
+
+.beer__actions {
+  @apply flex flex-row gap-2 md:gap-4;
+}
+
+.beer__description {
+  @apply flex justify-start items-center gap-1 text-sm;
+}
+
+.beer__description--label::after {
+  content: ' - ';
+}

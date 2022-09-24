@@ -18,6 +18,7 @@ specifiers:
   react-dom: ^18.2.0
   react-scripts: 5.0.1
   tailwindcss: ^3.1.8
+  ts-pattern: ^4.0.5
   typescript: ^4.8.3
   web-vitals: ^2.1.4
 
@@ -35,6 +36,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-scripts: 5.0.1_vpm4epegb5iztd7yhibv2hqiti
+  ts-pattern: 4.0.5
   typescript: 4.8.3
   web-vitals: 2.1.4
 
@@ -9207,6 +9209,10 @@ packages:
 
   /tryer/1.0.1:
     resolution: {integrity: sha512-c3zayb8/kWWpycWYg87P71E1S1ZL6b6IJxfb5fvsUgsf0S2MVGaDhDXXjDMpdCpfWXqptc+4mXwmiy1ypXqRAA==}
+    dev: false
+
+  /ts-pattern/4.0.5:
+    resolution: {integrity: sha512-Bq44KCEt7JVaNLa148mBCJkcQf4l7jtLEBDuDdeuLynWDA+1a60P4D0rMkqSM9mOKLQbIWUddE9h3XKyKwBeqA==}
     dev: false
 
   /tsconfig-paths/3.14.1:

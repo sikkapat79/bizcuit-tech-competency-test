@@ -12,3 +12,7 @@ export interface Beer {
   blg: string;
   randomCount: number;
 }
+
+export interface IBeerStore {
+  [beerUid: string]: Beer;
+}

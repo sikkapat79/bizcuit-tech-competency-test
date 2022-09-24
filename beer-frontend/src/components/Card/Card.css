@@ -1,0 +1,4 @@
+.card {
+  @apply w-72 h-auto bg-white
+  p-4 rounded-md shadow-md;
+}

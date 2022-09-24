@@ -1,0 +1,3 @@
+.card__footer {
+  @apply text-sm text-slate-400;
+}

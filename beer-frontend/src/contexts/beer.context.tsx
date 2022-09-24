@@ -1,12 +1,18 @@
-import { useState, FC, createContext, ReactNode, useContext } from 'react';
-import { Beer } from '../models/beer.model';
-import { addBeer as _addBeer } from './beer.context.controller';
-
-interface IBeerContext {
-  currentBeer?: Beer;
-  history: Beer[];
-  addBeer: (newBeer: Beer) => void;
-}
+import * as _ from 'lodash';
+import {
+  useState,
+  FC,
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+} from 'react';
+import { Beer, IBeerStore } from '../models/beer.model';
+import {
+  addBeer as _addBeer,
+  selectPreviousBeer as _selectPreviousBeer,
+} from './beer.context.controller';
+import { IBeerContext } from './beer.context.interface';
 
 const BeerContext = createContext<IBeerContext>(undefined!);
 
@@ -15,16 +21,38 @@ interface Props {
 }
 
 const BeerContextProvider: FC<Props> = ({ children }) => {
-  const [currentBeer, setCurrentBeer] = useState<Beer | undefined>();
-  const [history, setHistory] = useState<Beer[]>([]);
+  const [beerStore, setBeerStore] = useState<IBeerStore>({});
+  const [currentBeerUid, setCurrentBeerUid] = useState<string>('');
+  const [currentSelectedHistoryIndex, setCurrentSelectedHistoryIndex] =
+    useState<number>(-1);
+  const [history, setHistory] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (!_.isNil(currentSelectedHistoryIndex))
+      setCurrentBeerUid(() => history[currentSelectedHistoryIndex]);
+  }, [currentSelectedHistoryIndex]);
 
   const addBeer = (newBeer: Beer) =>
-    _addBeer({ newBeer, setHistory, setCurrentBeer });
+    _addBeer({
+      newBeer,
+      setHistory,
+      setBeerStore,
+      setCurrentSelectedHistoryIndex,
+    });
+
+  const selectPreviousBeer = () =>
+    _selectPreviousBeer(
+      currentSelectedHistoryIndex,
+      setCurrentSelectedHistoryIndex
+    );
 
   const defaultBeerContext: IBeerContext = {
-    currentBeer,
+    currentBeerUid,
+    currentSelectedHistoryIndex,
     history,
+    beerStore,
     addBeer,
+    selectPreviousBeer,
   };
 
   return (
