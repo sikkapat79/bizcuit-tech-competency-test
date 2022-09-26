@@ -33,10 +33,8 @@ const BeerPage = () => {
     setIsLoading(() => true);
     const _beer = await getRandomBeer();
 
-    setTimeout(() => {
-      setIsLoading(() => false);
-      addBeer({ ..._beer });
-    }, 2000);
+    setIsLoading(() => false);
+    addBeer({ ..._beer });
   };
 
   const handlePreviousBeerClick = selectPreviousBeer;
