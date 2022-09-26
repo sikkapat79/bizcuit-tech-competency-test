@@ -36,17 +36,17 @@ const addBeer = async (beer) => {
 
 const initDb = async () => {
   console.log('[INFO] add new beer into database for 20 beers.');
-  let beerStore = new Array(20).fill(null);
-
-  beerStore.map(async () => {
+  const prepareBeer = new Array(20).fill(null).map(async () => {
     const fetchedBeer = await fetchRandomBeer();
     const beer = await addBeer(fetchedBeer);
 
     return beer;
   });
 
-  beerStore = await Promise.all(beerStore);
-  console.table(beerStore);
+  const beers = await Promise.all(prepareBeer);
+
+  console.log(`[INFO] beers are already add to store for ${beers.length}`);
+  console.table(beers);
 };
 
 initDb();
