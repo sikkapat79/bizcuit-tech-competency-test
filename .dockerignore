@@ -1,0 +1,6 @@
+.git
+**/build
+**/dist
+**/.DS_Store
+Dockerfile
+*.log

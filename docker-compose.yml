@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:14-alpine
+    restart: always
+    container_name: database
+    environment:
+      - POSTGRES_USER=bizcuitadmin
+      - POSTGRES_PASSWORD=yoqtl3ctUA@8
+      - PGUSER=bizcuitadmin
+      - APP_USER=beerservice
+      - APP_PASSWORD=4xBO0v5VtOCx
+      - APP_DATABASE=competencytest
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready ", "-d", "competencytest" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    ports:
+      - 5432:5432
+    volumes:
+      - ./init-scripts/db:/docker-entrypoint-initdb.d/
+    networks:
+      - competency.test
+
+  beer-api:
+    build: ./beer-api
+    container_name: api
+    restart: always
+    ports:
+      - 4200:80
+    depends_on:
+      - database
+    networks:
+      - competency.test
+    env_file:
+      - ./beer-api/deploy.env
+
+  beer-frontend:
+    build: ./beer-frontend
+    container_name: fe
+    ports:
+      - 3000:80
+    depends_on:
+      - beer-api
+
+networks:
+  competency.test:
