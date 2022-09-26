@@ -13,13 +13,10 @@ const addBeer: AddBeerFn = ({
     const newHistory = [...beerUids, newBeer.uid];
 
     lastHistory = newHistory.length - 1;
+    setCurrentSelectedHistoryIndex(() => lastHistory);
 
     return newHistory;
   });
-
-  console.log(lastHistory);
-
-  setCurrentSelectedHistoryIndex(() => lastHistory);
 };
 
 const selectPreviousBeer: SelectPreviousBeerFn = (currentIdx, setState) => {

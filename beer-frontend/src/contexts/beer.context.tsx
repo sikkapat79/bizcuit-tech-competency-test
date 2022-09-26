@@ -30,7 +30,7 @@ const BeerContextProvider: FC<Props> = ({ children }) => {
   useEffect(() => {
     if (!_.isNil(currentSelectedHistoryIndex))
       setCurrentBeerUid(() => history[currentSelectedHistoryIndex]);
-  }, [currentSelectedHistoryIndex]);
+  }, [currentSelectedHistoryIndex, history]);
 
   const addBeer = (newBeer: Beer) =>
     _addBeer({
