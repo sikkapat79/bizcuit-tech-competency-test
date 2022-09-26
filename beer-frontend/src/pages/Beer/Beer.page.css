@@ -17,3 +17,7 @@
 .beer__description--label::after {
   content: ' - ';
 }
+
+.beer__empty {
+  @apply flex flex-col items-center justify-start gap-4;
+}

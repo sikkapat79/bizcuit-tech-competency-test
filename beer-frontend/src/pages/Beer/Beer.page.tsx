@@ -42,8 +42,11 @@ const BeerPage = () => {
   return (
     <div className='beer'>
       {!beer && (
-        <div className='beer__loading'>
-          <Loading />
+        <div className='beer__empty'>
+          <div className='beer__loading'>
+            <Loading />
+          </div>
+          <p>Beer store is empty. Please hit the button below.</p>
         </div>
       )}
       {beer && <BeerDetail beer={beer} />}
