@@ -1,0 +1,6 @@
+version: '3.8'
+services:
+  fetcher:
+    image: node:18-alpine
+    volumes:
+      - ./init-scripts/api/fetch.js:/app/fetch.js
